@@ -48,10 +48,8 @@
     }
 
     var links = document.querySelectorAll("a.icon-magnifier");
-    console.log(links.length);
     for (var i = 0; i < links.length; i++) {
         link = links[i];
-        console.log(link);
         if (link.href.match(/\d+\/.+\.(patch|diff)(\?|$)/)) {
             var downarrow = document.createElement('span');
             downarrow.classList.add('icon-only');

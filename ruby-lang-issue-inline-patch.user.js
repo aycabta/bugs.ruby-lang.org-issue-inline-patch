@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name       bugs.ruby-lang.org issue inline patch
 // @namespace  http://aycabta.github.io/
-// @version    0.1.1
+// @version    0.1.2
 // @include    /^https:\/\/bugs\.ruby-lang\.org\/issues\/\d+/
 // @copyright  2016+, Code Ass
 // ==/UserScript==

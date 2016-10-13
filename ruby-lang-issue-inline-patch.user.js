@@ -8,11 +8,10 @@
 
 (function() {
     var container = null;
-    var downarrow = null;
 
-    var processResponse = function() {
+    var processResponse = function(that, downarrow) {
         var parser = new DOMParser();
-        doc = parser.parseFromString(this.responseText, 'text/html');
+        doc = parser.parseFromString(that.responseText, 'text/html');
         container = doc.getElementById('content'); // TODO: hook "View differences"
         container.style.minHeight = '0';
         var attachments = document.getElementsByClassName('attachments')[0];
@@ -26,35 +25,35 @@
         downarrow.addEventListener('click', hidePatch);
     }
 
-    var loadPatch = function() {
+    var loadPatch = function(downarrow) {
         var xhr = new XMLHttpRequest();
-        xhr.addEventListener('load', processResponse);
+        xhr.addEventListener('load', function() { processResponse(this, downarrow); });
         xhr.open('GET', link.href, true);
         xhr.send();
     }
 
     var firstClick = function() {
-        downarrow.removeEventListener('click', firstClick);
-        loadPatch();
+        this.removeEventListener('click', firstClick);
+        loadPatch(this);
     }
 
     var displayPatch = function() {
-        downarrow.removeEventListener('click', displayPatch);
+        this.removeEventListener('click', displayPatch);
         container.style.display = 'inline';
-        downarrow.addEventListener('click', hidePatch);
+        this.addEventListener('click', hidePatch);
     }
 
     var hidePatch = function() {
-        downarrow.removeEventListener('click', hidePatch);
+        this.removeEventListener('click', hidePatch);
         container.style.display = 'none';
-        downarrow.addEventListener('click', displayPatch);
+        this.addEventListener('click', displayPatch);
     }
 
     var link = document.getElementsByClassName("icon-magnifier");
     if (link.length > 0) {
         link = link[0];
         if (link.href.match(/\d+\/.+\.(patch|diff)(\?|$)/)) {
-            downarrow = document.createElement('span');
+            var downarrow = document.createElement('span');
             downarrow.classList.add('icon-only');
             downarrow.style.backgroundImage = 'url(../images/1downarrow.png)';
             var attachmentsInfo = document.querySelector('div.attachments p');

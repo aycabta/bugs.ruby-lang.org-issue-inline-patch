@@ -13,7 +13,7 @@
     var processResponse = function() {
         var parser = new DOMParser();
         doc = parser.parseFromString(this.responseText, 'text/html');
-        container = doc.getElementById('content');
+        container = doc.getElementById('content'); // TODO: hook "View differences"
         container.style.minHeight = '0';
         var attachments = document.getElementsByClassName('attachments')[0];
         var link = document.createElement('link');

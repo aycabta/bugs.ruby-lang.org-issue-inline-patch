@@ -7,13 +7,14 @@
 // ==/UserScript==
 
 (function() {
-    var table = null;
+    var container = null;
     var downarrow = null;
 
     var processResponse = function() {
         var parser = new DOMParser();
         doc = parser.parseFromString(this.responseText, 'text/html');
-        table = doc.getElementsByClassName('filecontent')[0];
+        container = doc.getElementById('content');
+        container.style.minHeight = '0';
         var attachments = document.getElementsByClassName('attachments')[0];
         var link = document.createElement('link');
         link.setAttribute('rel', 'stylesheet');
@@ -21,7 +22,7 @@
         link.setAttribute('href', '/stylesheets/scm.css');
         var head = document.getElementsByTagName('head')[0];
         head.appendChild(link);
-        attachments.appendChild(table);
+        attachments.appendChild(container);
         downarrow.addEventListener('click', hidePatch);
     }
 
@@ -39,13 +40,13 @@
 
     var displayPatch = function() {
         downarrow.removeEventListener('click', displayPatch);
-        table.style.display = 'inline';
+        container.style.display = 'inline';
         downarrow.addEventListener('click', hidePatch);
     }
 
     var hidePatch = function() {
         downarrow.removeEventListener('click', hidePatch);
-        table.style.display = 'none';
+        container.style.display = 'none';
         downarrow.addEventListener('click', displayPatch);
     }
 

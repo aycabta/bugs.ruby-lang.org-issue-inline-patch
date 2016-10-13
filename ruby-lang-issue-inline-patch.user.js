@@ -7,21 +7,19 @@
 // ==/UserScript==
 
 (function() {
-    var container = null;
-
     var processResponse = function(response, downarrow) {
         var parser = new DOMParser();
         doc = parser.parseFromString(response.responseText, 'text/html');
-        container = doc.getElementById('content'); // TODO: hook "View differences"
+        var container = doc.getElementById('content'); // TODO: hook "View differences"
+        container.classList.add('patch-container');
         container.style.minHeight = '0';
-        var attachments = document.getElementsByClassName('attachments')[0];
         var link = document.createElement('link');
         link.setAttribute('rel', 'stylesheet');
         link.setAttribute('media', 'screen');
         link.setAttribute('href', '/stylesheets/scm.css');
         var head = document.getElementsByTagName('head')[0];
         head.appendChild(link);
-        attachments.appendChild(container);
+        downarrow.parentNode.appendChild(container);
         downarrow.addEventListener('click', hidePatch);
     }
 
@@ -39,13 +37,13 @@
 
     var displayPatch = function() {
         this.removeEventListener('click', displayPatch);
-        container.style.display = 'inline';
+        this.parentNode.getElementsByClassName('patch-container')[0].style.display = 'inline';
         this.addEventListener('click', hidePatch);
     }
 
     var hidePatch = function() {
         this.removeEventListener('click', hidePatch);
-        container.style.display = 'none';
+        this.parentNode.getElementsByClassName('patch-container')[0].style.display = 'none';
         this.addEventListener('click', displayPatch);
     }
 

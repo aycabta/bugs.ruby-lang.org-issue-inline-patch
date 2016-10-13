@@ -49,14 +49,16 @@
         this.addEventListener('click', displayPatch);
     }
 
-    var link = document.getElementsByClassName("icon-magnifier");
-    if (link.length > 0) {
-        link = link[0];
+    var links = document.querySelectorAll("a.icon-magnifier");
+    console.log(links.length);
+    for (var i = 0; i < links.length; i++) {
+        link = links[i];
+        console.log(link);
         if (link.href.match(/\d+\/.+\.(patch|diff)(\?|$)/)) {
             var downarrow = document.createElement('span');
             downarrow.classList.add('icon-only');
             downarrow.style.backgroundImage = 'url(../images/1downarrow.png)';
-            var attachmentsInfo = document.querySelector('div.attachments p');
+            var attachmentsInfo = link.parentNode;
             downarrow.addEventListener('click', firstClick);
             attachmentsInfo.appendChild(downarrow);
         }

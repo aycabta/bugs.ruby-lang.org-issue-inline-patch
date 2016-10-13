@@ -52,7 +52,7 @@
     var link = document.getElementsByClassName("icon-magnifier");
     if (link.length > 0) {
         link = link[0];
-        if (link.href.match(/\d+\/.+\.patch(\?|$)/)) {
+        if (link.href.match(/\d+\/.+\.(patch|diff)(\?|$)/)) {
             downarrow = document.createElement('span');
             downarrow.classList.add('icon-only');
             downarrow.style.backgroundImage = 'url(../images/1downarrow.png)';

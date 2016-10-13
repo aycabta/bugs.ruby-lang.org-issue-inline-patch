@@ -9,9 +9,9 @@
 (function() {
     var container = null;
 
-    var processResponse = function(that, downarrow) {
+    var processResponse = function(response, downarrow) {
         var parser = new DOMParser();
-        doc = parser.parseFromString(that.responseText, 'text/html');
+        doc = parser.parseFromString(response.responseText, 'text/html');
         container = doc.getElementById('content'); // TODO: hook "View differences"
         container.style.minHeight = '0';
         var attachments = document.getElementsByClassName('attachments')[0];

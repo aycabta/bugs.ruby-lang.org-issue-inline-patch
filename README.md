@@ -8,3 +8,11 @@ Names and natures often agree.
 ## Usage
 
 Click down-arrow button what is next to datetime of patch information.
+
+### Before
+
+![before](before.png)
+
+### After
+
+![after](after.png)

@@ -21,7 +21,7 @@
     var loadPatch = function(downarrow) {
         var xhr = new XMLHttpRequest();
         xhr.addEventListener('load', function() { processResponse(this, downarrow); });
-        xhr.open('GET', link.href, true);
+        xhr.open('GET', downarrow.dataset.href, true);
         downarrow.style.backgroundImage = 'url(../images/loading.gif)';
         xhr.send();
         if (!document.getElementById('scm-css')) {
@@ -60,6 +60,7 @@
             downarrow.classList.add('icon-only');
             downarrow.style.backgroundImage = 'url(../images/arrow_expanded.png)';
             var attachmentsInfo = link.parentNode;
+            downarrow.dataset.href = link.href;
             downarrow.addEventListener('click', firstClick);
             attachmentsInfo.appendChild(downarrow);
         }

@@ -13,12 +13,6 @@
         var container = doc.getElementById('content'); // TODO: hook "View differences"
         container.classList.add('patch-container');
         container.style.minHeight = '0';
-        var link = document.createElement('link');
-        link.setAttribute('rel', 'stylesheet');
-        link.setAttribute('media', 'screen');
-        link.setAttribute('href', '/stylesheets/scm.css');
-        var head = document.getElementsByTagName('head')[0];
-        head.appendChild(link);
         downarrow.parentNode.appendChild(container);
         downarrow.style.backgroundImage = 'url(../images/1downarrow.png)';
         downarrow.addEventListener('click', hidePatch);
@@ -30,6 +24,15 @@
         xhr.open('GET', link.href, true);
         downarrow.style.backgroundImage = 'url(../images/loading.gif)';
         xhr.send();
+        if (!document.getElementById('scm-css')) {
+            var cssLink = document.createElement('link');
+            cssLink.id = 'scm-css';
+            cssLink.setAttribute('rel', 'stylesheet');
+            cssLink.setAttribute('media', 'screen');
+            cssLink.setAttribute('href', '/stylesheets/scm.css');
+            var head = document.getElementsByTagName('head')[0];
+            head.appendChild(cssLink);
+        }
     }
 
     var firstClick = function() {

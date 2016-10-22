@@ -28,6 +28,7 @@
         var xhr = new XMLHttpRequest();
         xhr.addEventListener('load', function() { processResponse(this, downarrow); });
         xhr.open('GET', link.href, true);
+        downarrow.style.backgroundImage = 'url(../images/loading.gif)';
         xhr.send();
     }
 

@@ -2,6 +2,7 @@
 // @name       bugs.ruby-lang.org issue inline patch
 // @namespace  http://aycabta.github.io/
 // @version    0.1.4
+// @description  Names and natures often agree.
 // @include    /^https:\/\/bugs\.ruby-lang\.org\/issues\/\d+/
 // @copyright  2016+, Code Ass
 // ==/UserScript==

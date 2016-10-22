@@ -20,6 +20,7 @@
         var head = document.getElementsByTagName('head')[0];
         head.appendChild(link);
         downarrow.parentNode.appendChild(container);
+        downarrow.style.backgroundImage = 'url(../images/1downarrow.png)';
         downarrow.addEventListener('click', hidePatch);
     }
 
@@ -53,7 +54,7 @@
         if (link.href.match(/\d+\/.+\.(patch|diff)(\?|$)/)) {
             var downarrow = document.createElement('span');
             downarrow.classList.add('icon-only');
-            downarrow.style.backgroundImage = 'url(../images/1downarrow.png)';
+            downarrow.style.backgroundImage = 'url(../images/arrow_expanded.png)';
             var attachmentsInfo = link.parentNode;
             downarrow.addEventListener('click', firstClick);
             attachmentsInfo.appendChild(downarrow);

@@ -53,6 +53,14 @@
         this.addEventListener('click', displayPatch);
     }
 
+    var images = ['../images/arrow_expanded.png', '../images/loading.gif', '../images/1downarrow.png'];
+    var preloadImages = [];
+    images.forEach(function(image) {
+        var preImage = new Image();
+        preImage.src = image;
+        preloadImages.push(preImage);
+    });
+
     var links = document.querySelectorAll("a.icon-magnifier");
     for (var i = 0; i < links.length; i++) {
         link = links[i];

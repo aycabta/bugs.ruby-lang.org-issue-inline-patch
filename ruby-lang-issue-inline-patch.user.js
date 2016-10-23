@@ -53,6 +53,8 @@
         this.addEventListener('click', displayPatch);
     }
 
+    document.getElementById('footer').style.height = '100vh';
+
     var images = ['../images/arrow_expanded.png', '../images/loading.gif', '../images/1downarrow.png'];
     var preloadImages = [];
     images.forEach(function(image) {

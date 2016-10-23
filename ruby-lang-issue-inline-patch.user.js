@@ -62,8 +62,7 @@
     });
 
     var links = document.querySelectorAll("a.icon-magnifier");
-    for (var i = 0; i < links.length; i++) {
-        link = links[i];
+    [].forEach.call(links, function(link) {
         if (link.href.match(/\d+\/.+\.(patch|diff|rb)(\?|$)/)) {
             var downarrow = document.createElement('span');
             downarrow.classList.add('icon-only');
@@ -73,5 +72,5 @@
             downarrow.addEventListener('click', firstClick);
             attachmentsInfo.appendChild(downarrow);
         }
-    }
+    });
 })();

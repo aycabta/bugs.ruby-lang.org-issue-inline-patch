@@ -1,4 +1,4 @@
-// ==UserScript==
+﻿// ==UserScript==
 // @name       bugs.ruby-lang.org issue inline patch
 // @namespace  http://aycabta.github.io/
 // @version    0.1.4

@@ -14,7 +14,13 @@
         var container = doc.getElementById('content'); // TODO: hook "View differences"
         container.classList.add('patch-container');
         container.style.minHeight = '0';
-        downarrow.parentNode.appendChild(container);
+        var td = document.createElement('td');
+        td.setAttribute('colspan', '4');
+        td.appendChild(container);
+        var tr = document.createElement('tr');
+        tr.appendChild(td);
+        var insertPoint = downarrow.parentNode.parentNode;
+        insertPoint.parentNode.insertBefore(tr, insertPoint.nextSibling);
         downarrow.style.backgroundImage = 'url(../images/1downarrow.png)';
         downarrow.addEventListener('click', hidePatch);
     }
@@ -43,13 +49,13 @@
 
     var displayPatch = function() {
         this.removeEventListener('click', displayPatch);
-        this.parentNode.getElementsByClassName('patch-container')[0].style.display = 'inline';
+        this.parentNode.parentNode.nextSibling.getElementsByClassName('patch-container')[0].style.display = 'inline';
         this.addEventListener('click', hidePatch);
     }
 
     var hidePatch = function() {
         this.removeEventListener('click', hidePatch);
-        this.parentNode.getElementsByClassName('patch-container')[0].style.display = 'none';
+        this.parentNode.parentNode.nextSibling.getElementsByClassName('patch-container')[0].style.display = 'none';
         this.addEventListener('click', displayPatch);
     }
 
@@ -63,7 +69,7 @@
         preloadImages.push(preImage);
     });
 
-    var links = document.querySelectorAll("a.icon-magnifier");
+    var links = document.querySelectorAll("a.icon-attachment");
     [].forEach.call(links, function(link) {
         if (link.href.match(/\d+\/.+\.(patch|diff|rb)(\?|$)/)) {
             var downarrow = document.createElement('span');

@@ -1,7 +1,7 @@
 ﻿// ==UserScript==
 // @name       bugs.ruby-lang.org issue inline patch
 // @license    MIT
-// @namespace  http://aycabta.github.io/
+// @namespace  https://github.com/aycabta
 // @version    0.1.6.0
 // @description  Names and natures often agree.
 // @include    /^https:\/\/bugs\.ruby-lang\.org\/issues\/\d+/

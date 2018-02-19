@@ -2,7 +2,7 @@
 // @name       bugs.ruby-lang.org issue inline patch
 // @license    MIT
 // @namespace  https://github.com/aycabta
-// @version    0.1.6.0
+// @version    0.1.6.1
 // @description  Names and natures often agree.
 // @include    /^https:\/\/bugs\.ruby-lang\.org\/issues\/\d+/
 // @copyright  2016+, Code Ass
